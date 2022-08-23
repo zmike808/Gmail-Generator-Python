@@ -39,7 +39,7 @@ def ext():
 
 # Function used to open Firefox
 def open_firefox():
-        
+
     # Printing basic message
     msg(1,'Opening Firefox...')
 
@@ -59,14 +59,14 @@ def open_firefox():
     # Search for Firefox in the menu search
     pyautogui.typewrite('firefox')
     pyautogui.typewrite('\n')
-    
+
     # Print message
     msg(1,'Firefox is now open and running.')
 
 
 # Function used to locate GMail
 def locate_gmail():
-    
+
     #Sleep for a while and wait for Firefox to open
     time.sleep(3)
 
@@ -77,7 +77,7 @@ def locate_gmail():
     pyautogui.keyDown('ctrlleft');  pyautogui.typewrite('a'); pyautogui.keyUp('ctrlleft')
     pyautogui.typewrite('https://accounts.google.com/SignUp?service=mail&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ltmpl=default')
     pyautogui.typewrite('\n')
-    
+
     # Wait for a while until the website responds
     time.sleep(6)
 
@@ -86,13 +86,13 @@ def locate_gmail():
 
     # Locate the form
     pyautogui.press('tab')
- 
+
     time.sleep(2)
 
     _gmail_ = pyautogui.locateOnScreen('images/gmail_form.png')
     formx, formy = pyautogui.center(_gmail_)
     pyautogui.click(formx, formy)
-    
+
     # Check and print message
     if not pyautogui.click(formx, formy):
         msg(1,'Located the form.')
@@ -107,7 +107,7 @@ def randomize(
                 _length_
             ):
 
-    if _length_ > 0 :
+    if _length_ > 0:
 
         # Options:
         #       -p      for letters, numbers and symbols
@@ -117,22 +117,22 @@ def randomize(
         #       -d      for day selection
         #       -y      for year selection
 
-        if _option_ == '-p':
-            string._characters_='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+'
-        elif _option_ == '-l':
+        if _option_ == '-l':
             string._characters_='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        elif _option_ == '-n':
-            string._characters_='1234567890'
         elif _option_ == '-m':
             string._characters_='JFMASOND'
 
+        elif _option_ == '-n':
+            string._characters_='1234567890'
+        elif _option_ == '-p':
+            string._characters_='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+'
         if _option_ == '-d':
             _generated_info_=random.randint(1,28)
         elif _option_ == '-y':
             _generated_info_=random.randint(1950,2000)
         else:
             _generated_info_=''
-            for _counter_ in range(0,_length_) :
+            for _counter_ in range(_length_):
                 _generated_info_= _generated_info_ + random.choice(string._characters_)
 
         return _generated_info_
